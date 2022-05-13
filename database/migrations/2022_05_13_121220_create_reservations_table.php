@@ -15,9 +15,12 @@ class CreateReservationsTable extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
-            $table->name();
-            $table->$table->string('email')->unique();
-            $table->dateTime('created');
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('telephone',12)->unique();
+            $table->date('date');
+            $table->time('sunrise',0);
+            $table->foreignId('service_id')->constrained('services')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

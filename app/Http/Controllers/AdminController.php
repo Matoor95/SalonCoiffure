@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Service;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,8 @@ class AdminController extends Controller
     public function create()
     {
         //
-        return view ('admin.form');
+        $service=Service::pluck('name');
+        return view ('admin.form',compact('service'));
     }
 
     /**
@@ -38,8 +40,14 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         //
-        $dataform=$request->all();
-        Reservation::create($dataform);
+        $reservation=new Reservation();
+        $reservation->name = $request->name;
+        $reservation->email = $request->email;
+        $reservation->date = $request->date;
+        $reservation->sunrise = $request->heure;
+        $reservation->telephone = $request->tel;
+        $reservation->service_id = $request->service;
+        $reservation->save();
         return redirect()->route('admin.index')->with('notice','ajout ok');
     }
 
@@ -79,7 +87,7 @@ class AdminController extends Controller
         //
         $reservation=Reservation::find($id);
         $reservation->update($request->all());
-        return redirect()->route('admin.index')->with('notice','Update ok');;
+        return redirect()->route('admin.index')->with('notice','Update ok');
     }
 
     /**

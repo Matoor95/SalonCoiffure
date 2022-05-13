@@ -15,7 +15,7 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-Route::resource('/admin', AdminController::class);
+Route::resource('admin', AdminController::class);
 
 Auth::routes();
 

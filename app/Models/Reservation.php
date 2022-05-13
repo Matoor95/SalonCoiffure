@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Reservation extends Model
 {
     use HasFactory;
+    protected $fillable=['name','email','date','sunrice','service_id'];
+    public function services(){
+        return $this->belongsTo(Service::class);
+    }
 }

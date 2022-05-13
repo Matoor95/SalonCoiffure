@@ -5,12 +5,12 @@
             <div class="card card-primary col-md-6 mx-auto mb-4">
 
                 <div class="card-body">
-                    {!! Form::open() !!}
+                    {!! Form::open(['route'=>'admin.store']) !!}
                     <div class="form-group">
-{!! Form::label('nom', 'Nom', []) !!}
+                        {!! Form::label('name', 'Nom', []) !!}
                         <div class="input-group">
 
-                            <input type="text" name="slug" class="form-control" placeholder="Entrer le selug du produit">
+                            {!! Form::text('name', null, ['class' => 'form-control']) !!}
                         </div>
                         <!-- /.input group -->
                     </div>
@@ -18,54 +18,46 @@
 
                     <!-- Date mm/dd/yyyy -->
                     <div class="form-group">
-                        <label>Nom:</label>
+                        {!! Form::label('email', 'Email', []) !!}
+
                         <div class="input-group">
 
-                            <input type="texte" name="nom" class="form-control" placeholder="Entrer le nom du produit">
+                            {!! Form::email('email', null, ['class' => 'form-control']) !!}
                         </div>
                         <!-- /.input group -->
                     </div>
                     <div class="form-group">
-                        <label>Description:</label>
+                        {!! Form::label('tel', 'Téléphone', []) !!}
+
                         <div class="input-group">
 
-                            <input type="texte" name="description" class="form-control"
-                                placeholder="Entrer la description">
+                            {!! Form::tel('tel', null, ['class' => 'form-control']) !!}
                         </div>
                         <!-- /.input group -->
                     </div>
                     <div class="form-group">
-                        <label>Prix:</label>
-                        <div class="input-group">
+                        {!! Form::label('date', 'Date', []) !!}
 
-                            <input type="number" name="prix" class="form-control">
+                        <div class="input-group">
+                            {!! Form::date('date', null, ['class' => 'form-control']) !!}
+
+
                         </div>
                         <!-- /.input group -->
                     </div>
                     <div class="form-group">
-                        <label>Quantité:</label>
+                        {!! Form::label('heure', 'Heure', []) !!}
                         <div class="input-group">
 
-                            <input type="number" name="quantite" class="form-control">
+                            {!! Form::time('heure', null, ['class' => 'form-control']) !!}
                         </div>
                         <!-- /.input group -->
                     </div>
                     <div class="form-group">
-                        <label>image:</label>
-                        <div class="input-group">
-                            <input type="file" name="matar" class="form-control">
-                        </div>
-                        <!-- /.input group -->
-                    </div>
-
-                    <div class="form-group">
-                        <label>Active:</label>
+                        {!! Form::label('service', 'service', []) !!}
                         <div class="input-group">
 
-                            <select name="active" id="" class="form-control">
-                                <option value="1">active</option>
-                                <option value="0">pas active</option>
-                            </select>
+                            {!! Form::select('service', $service, null, ['class'=> 'form-control']) !!}
                         </div>
                         <!-- /.input group -->
                     </div>
